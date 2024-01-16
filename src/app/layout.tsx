@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google';
 import { Flex } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Footer, Header } from './components';
 
 import './globals.css';
@@ -36,7 +35,6 @@ export default function RootLayout({
               <Footer />
             </Flex>
           </ChakraProvider>
-          <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
       </body>
     </html>

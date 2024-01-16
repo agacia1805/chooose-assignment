@@ -34,10 +34,10 @@ export default function DetailsPage() {
   if (!trip) return null;
 
   const icons = [
-    <PiFlag size={32} key='flag-icon' fill='#1A202C'/>,
-    <PiGlobeHemisphereEast size={32} key='globe-icon' fill='#1A202C'/>,
-    <PiBagSimple size={32} key='bad-icon' fill='#1A202C'/>,
-    <BsPeople size={32} key='people-icon' fill='#1A202C'/>,
+    <PiFlag size={32} key='flag-icon' fill='#1A202C' />,
+    <PiGlobeHemisphereEast size={32} key='globe-icon' fill='#1A202C' />,
+    <PiBagSimple size={32} key='bad-icon' fill='#1A202C' />,
+    <BsPeople size={32} key='people-icon' fill='#1A202C' />,
   ];
 
   return (
@@ -74,7 +74,13 @@ export default function DetailsPage() {
               alt={`'${trip.title}' image`}
             />
           </AspectRatio>
-          <Heading as='h2' size='md' fontWeight='semibold' mt={{ base: '6', md: '10' }} mb={6}>
+          <Heading
+            as='h2'
+            size='md'
+            fontWeight='semibold'
+            mt={{ base: '6', md: '10' }}
+            mb={6}
+          >
             Overview
           </Heading>
           <SimpleGrid columns={{ base: 1, md: 2 }} gap='6'>
@@ -82,16 +88,26 @@ export default function DetailsPage() {
               <Flex gap='5' key={`benefit-${idx + 1}`}>
                 <Box w='16'>{icons[idx]}</Box>
                 <Stack spacing={1}>
-                  <Heading mt={1} as='h3' size='md' fontWeight='semibold' color='gray.800'>
+                  <Heading
+                    mt={1}
+                    as='h3'
+                    size='md'
+                    fontWeight='semibold'
+                    color='gray.800'
+                  >
                     {benefit.title}
                   </Heading>
-                  <Text color='gray.600' fontSize='sm'>{benefit.description}</Text>
+                  <Text color='gray.600' fontSize='sm'>
+                    {benefit.description}
+                  </Text>
                 </Stack>
               </Flex>
             ))}
           </SimpleGrid>
           <Divider my='8' borderColor='blackAlpha.400' />
-          <Text fontWeight='regular' fontSize='sm'>{trip.description}</Text>
+          <Text fontWeight='regular' fontSize='sm'>
+            {trip.description}
+          </Text>
         </Box>
         <Stack
           alignSelf='flex-start'
@@ -116,7 +132,9 @@ export default function DetailsPage() {
             </Text>
           </Box>
           <Box>
-            <Text fontWeight='semibold' color='gray.600'>Countries included:</Text>
+            <Text fontWeight='semibold' color='gray.600'>
+              Countries included:
+            </Text>
             <UnorderedList
               display='grid'
               gap='2'

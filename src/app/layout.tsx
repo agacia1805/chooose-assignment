@@ -1,17 +1,17 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { Inter } from 'next/font/google';
 import { Flex } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Footer, Header } from './components';
 
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Chooose assignment',
-  description: 'Created by Agata D.',
-};
+const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -20,18 +20,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body
-        className={`${inter.className} flex min-h-screen flex-col bg-gray-300`}
-      >
-        <ChakraProvider>
-          <Flex direction='column' flex='1'>
-            <Header />
-            <div className='flex flex-grow flex-col justify-center'>
-              {children}
-            </div>
-            <Footer />
-          </Flex>
-        </ChakraProvider>
+      <head>
+        <title>Chooose assignment</title>
+        <meta
+          name='description'
+          content='Take home assignment for frontend developer role'
+        />
+      </head>
+      <body className={`${inter.className} min-h-screen bg-gray-200`}>
+        <QueryClientProvider client={queryClient}>
+          <ChakraProvider>
+            <Flex direction='column' flex={1} gap={6} minHeight='100vh'>
+              <Header />
+              <Flex flex='1'>{children}</Flex>
+              <Footer />
+            </Flex>
+          </ChakraProvider>
+          <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
       </body>
     </html>
   );

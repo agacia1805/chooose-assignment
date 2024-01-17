@@ -1,8 +1,16 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Container, SimpleGrid, Spinner, Flex, Box } from '@chakra-ui/react';
+import {
+  Container,
+  SimpleGrid,
+  Spinner,
+  Flex,
+  Box,
+  Text,
+} from '@chakra-ui/react';
 import { TripCard } from './components';
+import { GiBrokenHeartZone } from 'react-icons/gi';
 import { useInView } from 'react-intersection-observer';
 import { useTrips } from './hooks/useTrips';
 
@@ -13,6 +21,7 @@ export default function Home() {
     hasNextPage,
     isLoading,
     isFetchingNextPage,
+    error,
   } = useTrips();
 
   const { ref, inView } = useInView({
@@ -43,6 +52,24 @@ export default function Home() {
         />
       </Flex>
     );
+
+  if (error) {
+    return (
+      <Flex
+        justifyContent='center'
+        alignItems='center'
+        as='main'
+        role='main'
+        width='full'
+        flexDirection='column'
+        gap={4}
+        px={2}
+      >
+        <GiBrokenHeartZone size={60} />
+        <Text>Something went wrong, try again later.</Text>
+      </Flex>
+    );
+  }
 
   return (
     <Container as='main' role='main' maxW='container.xl'>

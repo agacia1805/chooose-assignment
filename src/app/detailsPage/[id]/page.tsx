@@ -80,7 +80,7 @@ export default function DetailsPage() {
   return (
     <Container
       as='main'
-      role='main-content'
+      role='main'
       maxW='container.xl'
       py={{ base: '2', md: '4' }}
       px={4}
@@ -104,13 +104,10 @@ export default function DetailsPage() {
             ratio={40 / 20}
             borderRadius={12}
             overflow='hidden'
-            width='full'
           >
             <Image
-              as={NextImage}
-              src={trip.photoUrl}
+width='full'              src={trip.photoUrl}
               alt={`'${trip.title}' image`}
-              layout='fill'
             />
           </AspectRatio>
           <Heading

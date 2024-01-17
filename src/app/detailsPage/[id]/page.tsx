@@ -3,7 +3,6 @@
 import {
   AspectRatio,
   Box,
-  Center,
   Container,
   Divider,
   Flex,
@@ -21,15 +20,52 @@ import {
 import { useParams } from 'next/navigation';
 import { PiGlobeHemisphereEast, PiFlag, PiBagSimple } from 'react-icons/pi';
 import { BsPeople } from 'react-icons/bs';
+import { GiBrokenHeartZone } from 'react-icons/gi';
 import { formatWeight } from '@/app/utils/formatWeight';
 import { useTrip } from '../../hooks/useTrip';
 import NextLink from 'next/link';
-import NextImage from 'next/image';
 
 export default function DetailsPage() {
   const id = useParams()?.id;
   const { data: trip, isLoading, error } = useTrip(Number(id));
-  console.log(trip);
+
+  if (isLoading) {
+    return (
+      <Flex
+        justifyContent='center'
+        alignItems='center'
+        as='main'
+        role='main'
+        width='full'
+      >
+        <Spinner
+          thickness='4px'
+          speed='1s'
+          emptyColor='gray.200'
+          color='gray.700'
+          size='xl'
+        />
+      </Flex>
+    );
+  }
+
+  if (error) {
+    return (
+      <Flex
+        justifyContent='center'
+        alignItems='center'
+        as='main'
+        role='main'
+        width='full'
+        flexDirection='column'
+        gap={4}
+        px={2}
+      >
+        <GiBrokenHeartZone size={60} />
+        <Text>Something went wrong, try again later.</Text>
+      </Flex>
+    );
+  }
 
   if (!trip) return null;
 

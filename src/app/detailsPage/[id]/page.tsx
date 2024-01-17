@@ -106,7 +106,8 @@ export default function DetailsPage() {
             overflow='hidden'
           >
             <Image
-width='full'              src={trip.photoUrl}
+              width='full'
+              src={trip.photoUrl}
               alt={`'${trip.title}' image`}
             />
           </AspectRatio>

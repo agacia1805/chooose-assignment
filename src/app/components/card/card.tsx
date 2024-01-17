@@ -16,6 +16,7 @@ import { ITrip } from '../../types';
 import Link from 'next/link';
 import { formatWeight } from '@/app/utils/formatWeight';
 import { useQueryClient } from '@tanstack/react-query';
+import StarRatings from 'react-star-ratings';
 import { fetchTrip } from '../../hooks/useTrip';
 
 export const TripCard = ({ trip }: { trip: ITrip }) => {
@@ -38,6 +39,9 @@ export const TripCard = ({ trip }: { trip: ITrip }) => {
           backgroundSize='cover'
           backgroundPosition='center'
           borderRadius={12}
+          h='full'
+          display='flex'
+          flexDirection='column'
         >
           <Flex
             direction='column'
@@ -45,6 +49,7 @@ export const TripCard = ({ trip }: { trip: ITrip }) => {
             justify='center'
             align='center'
             color='white'
+            mb={6}
           >
             <Flex direction='column' gap={1} justify='center' align='center'>
               <Heading fontSize='1.5rem' as='h2'>
@@ -80,24 +85,41 @@ export const TripCard = ({ trip }: { trip: ITrip }) => {
                 {formatWeight(trip.co2kilograms)}
               </Text>
             </Flex>
-            <Flex
-              direction={['column', 'row']}
-              align='center'
-              justify='space-between'
-              width='75%'
-              color='#1F2838'
-              fontSize='sm'
-              fontWeight='semibold'
-              backgroundColor='white'
-              borderRadius='12px 12px 0 0'
-              padding={['6px 6px 0', '12px 24px']}
-            >
-              <Text>Trip rating</Text>
-
-              <Flex direction={['column', 'row']} align='center'>
-                <Box height='28px'></Box>
-                <Text>{trip.rating}</Text>
-              </Flex>
+          </Flex>
+          <Flex
+            direction={['column', 'row']}
+            align='center'
+            justify='space-between'
+            width='80%'
+            color='#1F2838'
+            fontSize='sm'
+            fontWeight='semibold'
+            backgroundColor='white'
+            borderRadius='12px 12px 0 0'
+            padding={['6px 6px 0', '12px']}
+            gap={1}
+            mt='auto'
+            alignSelf='center'
+          >
+            <Text alignSelf='center'>Trip rating</Text>
+            <Flex direction={['column', 'row']} align='center' gap={1}>
+              <Box
+                display='flex'
+                alignItems='start'
+                sx={{
+                  '.star-ratings': {
+                    display: 'flex !important',
+                  },
+                }}
+              >
+                <StarRatings
+                  rating={trip.rating}
+                  starDimension='15px'
+                  starSpacing='0'
+                  starRatedColor='gold'
+                />
+              </Box>
+              <Text alignSelf='center'>{trip.rating}</Text>
             </Flex>
           </Flex>
         </Box>

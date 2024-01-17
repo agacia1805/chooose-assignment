@@ -24,6 +24,7 @@ import { GiBrokenHeartZone } from 'react-icons/gi';
 import { formatWeight } from '@/app/utils/formatWeight';
 import { useTrip } from '../../hooks/useTrip';
 import NextLink from 'next/link';
+import NextImage from 'next/image';
 
 export default function DetailsPage() {
   const id = useParams()?.id;
@@ -79,7 +80,7 @@ export default function DetailsPage() {
   return (
     <Container
       as='main'
-      role='contentinfo'
+      role='main-content'
       maxW='container.xl'
       py={{ base: '2', md: '4' }}
       px={4}
@@ -103,11 +104,13 @@ export default function DetailsPage() {
             ratio={40 / 20}
             borderRadius={12}
             overflow='hidden'
+            width='full'
           >
             <Image
-              width='full'
+              as={NextImage}
               src={trip.photoUrl}
               alt={`'${trip.title}' image`}
+              layout='fill'
             />
           </AspectRatio>
           <Heading

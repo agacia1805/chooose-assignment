@@ -10,7 +10,7 @@ import { Link } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export const Footer = () => (
-  <Container as='footer' role='content' py={{ base: '12', md: '16' }}>
+  <Container as='footer' py={{ base: '12', md: '16' }}>
     <Stack spacing={{ base: '4', md: '5' }}>
       <Stack justify='space-between' direction='row' align='center'>
         <Text fontSize='sm' fontWeight='semibold' color='fg.subtle'>
